@@ -2,7 +2,7 @@ version: "3"
 
 services:
   backend:
-    image: harbor.fintechsys.net/harbor.fintechsys.net/jawali-company-system/develop@sha256:16953593f9c3675be139ff6b622a1d07baaaf5b01d3d95b9baa99d611f515252
+    image: ${IMAGE}
     deploy:
       restart_policy:
         condition: on-failure
@@ -11,7 +11,7 @@ services:
       - logs:/home/frappe/frappe-bench/logs
 
   configurator:
-    image: harbor.fintechsys.net/harbor.fintechsys.net/jawali-company-system/develop@sha256:16953593f9c3675be139ff6b622a1d07baaaf5b01d3d95b9baa99d611f515252
+    image: ${IMAGE}
     
     deploy:
       restart_policy:
@@ -40,7 +40,7 @@ services:
       - logs:/home/frappe/frappe-bench/logs
 
   create-site:
-    image: harbor.fintechsys.net/harbor.fintechsys.net/jawali-company-system/develop@sha256:16953593f9c3675be139ff6b622a1d07baaaf5b01d3d95b9baa99d611f515252
+    image: ${IMAGE}
     
     deploy:
       restart_policy:
@@ -92,7 +92,7 @@ services:
       - db-data:/var/lib/mysql
 
   frontend:
-    image: harbor.fintechsys.net/harbor.fintechsys.net/jawali-company-system/develop@sha256:16953593f9c3675be139ff6b622a1d07baaaf5b01d3d95b9baa99d611f515252
+    image: ${IMAGE}
     deploy:
       restart_policy:
         condition: on-failure
@@ -111,11 +111,11 @@ services:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
     ports:
-      - "8082:8080"
+      - "${MAIN_PORT}:8080"
 
 
   queue-long:
-    image: harbor.fintechsys.net/harbor.fintechsys.net/jawali-company-system/develop@sha256:16953593f9c3675be139ff6b622a1d07baaaf5b01d3d95b9baa99d611f515252
+    image: ${IMAGE}
     deploy:
       restart_policy:
         condition: on-failure
@@ -129,7 +129,7 @@ services:
       - logs:/home/frappe/frappe-bench/logs
 
   queue-short:
-    image: harbor.fintechsys.net/harbor.fintechsys.net/jawali-company-system/develop@sha256:16953593f9c3675be139ff6b622a1d07baaaf5b01d3d95b9baa99d611f515252
+    image: ${IMAGE}
     deploy:
       restart_policy:
         condition: on-failure
@@ -159,7 +159,7 @@ services:
       - redis-cache-data:/data
 
   scheduler:
-    image: harbor.fintechsys.net/harbor.fintechsys.net/jawali-company-system/develop@sha256:16953593f9c3675be139ff6b622a1d07baaaf5b01d3d95b9baa99d611f515252
+    image: ${IMAGE}
     deploy:
       restart_policy:
         condition: on-failure
@@ -171,7 +171,7 @@ services:
       - logs:/home/frappe/frappe-bench/logs
 
   websocket:
-    image: harbor.fintechsys.net/harbor.fintechsys.net/jawali-company-system/develop@sha256:16953593f9c3675be139ff6b622a1d07baaaf5b01d3d95b9baa99d611f515252
+    image: ${IMAGE}
     deploy:
       restart_policy:
         condition: on-failure
